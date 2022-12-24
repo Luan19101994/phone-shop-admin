@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sản phẩm</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center my-4">Quản lý sản phẩm</h1>
+      <button
+        type="button"
+        id="openModal"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#modalManager"
+      >
+        Thêm sản phẩm
+      </button>
+      <div
+        class="modal fade bd-example-modal-lg"
+        id="modalManager"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalManagerLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalManagerLabel">
+                Thêm sản phẩm mới
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Tên sản phẩm:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Nhập tên sản phẩm"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Giá sản phẩm:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="price"
+                    placeholder="Nhập giá sản phẩm"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Hình ảnh:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="img"
+                    placeholder="Nhập hình ảnh sản phẩm"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Màn hình:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="screen"
+                    placeholder="Nhập thông tin Màn hình"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Camera sau:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="backCamera"
+                    placeholder="Nhập thông tin Camera sau"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Camera trước:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="frontCamera"
+                    placeholder="Nhập thông tin Camera sau"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Hãng:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="type"
+                    placeholder="Nhập thông tin hãng sản xuất"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label"
+                    >Mô tả:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="desc"
+                    placeholder="Nhập mô tả sản phẩm"
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Hủy
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                onclick="addProduct()"
+              >
+                Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade bd-example-modal-lg"
+        id="modalEdit"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalEditLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalEditLabel">
+                Chi tiết sản phẩm (Mã SP:<span id="idProduct"> </span>)
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Tên sản phẩm:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nameEdit"
+                    placeholder="Nhập tên sản phẩm"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Giá sản phẩm:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="priceEdit"
+                    placeholder="Nhập giá sản phẩm"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Hình ảnh:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="imgEdit"
+                    placeholder="Nhập hình ảnh sản phẩm"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Màn hình:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="screenEdit"
+                    placeholder="Nhập thông tin Màn hình"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Camera sau:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="backCameraEdit"
+                    placeholder="Nhập thông tin Camera sau"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Camera trước:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="frontCameraEdit"
+                    placeholder="Nhập thông tin Camera sau"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Hãng:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="typeEdit"
+                    placeholder="Nhập thông tin hãng sản xuất"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label"
+                    >Mô tả:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="descEdit"
+                    placeholder="Nhập mô tả sản phẩm"
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Hủy
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                onclick="updateProduct()"
+              >
+                Cập nhật
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Giá</th>
+            <th>Hình Ảnh</th>
+            <th>Mô Tả</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="listProduct">
+        </tbody>
+      </table>
+      <div id="loading" class="container"></div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
